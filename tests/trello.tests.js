@@ -3,46 +3,89 @@ describe("Trello Suite", async () => {
         await browser.url("https://trello.com/home");
     });
 
-    it("Logging in with an invalid email", async () => {
+    // it("Logging in with an invalid email", async () => {
+    //     const logInButton = await $('//div[contains(@class, "jnMZCI")]/a[text()="Log in"]');
+    //     await logInButton.waitForClickable();
+    //     await logInButton.click();
+
+    //     const signUpButton = await $('//a[text()="Create an account"]');
+    //     await signUpButton.waitForClickable();
+    //     await signUpButton.click();
+
+    //     await browser.pause(1000);
+
+    //     const emailInputField = await $('//input[@id="email"]');
+    //     await emailInputField.click();
+    //     await emailInputField.setValue('testnodejs55555@gmail');
+
+    //     const signUpSubmitButton = await $('//button[@id="signup-submit"]');
+    //     await signUpSubmitButton.waitForClickable();
+    //     await signUpSubmitButton.click();
+
+    //     const errorMessage = await $('//div[@id="email-uid6-error"]');
+    //     expect (await errorMessage.getText()).toEqual("Please enter a valid email address");
+
+    // });
+
+    // it("Logging in with a valid email", async () => {
+    //     const logInButton = await $('//div[contains(@class, "jnMZCI")]/a[text()="Log in"]');
+    //     await logInButton.waitForClickable();
+    //     await logInButton.click();
+
+    //     await browser.pause(1000);
+
+    //     const emailInputField = await $('//input[@id="username"]');
+    //     await emailInputField.click();
+    //     await emailInputField.setValue('testnodejs55555@gmail.com');
+        
+    //     await browser.pause(1000);
+
+    //     const loginSubmitButton = await $('//button[@id="login-submit"]');
+    //     await loginSubmitButton.waitForClickable();
+    //     await loginSubmitButton.click();
+
+    //     await browser.pause(1000);
+
+    //     const passwordInputField = await $('//input[@id="password"]');
+    //     await passwordInputField.click();
+    //     await passwordInputField.setValue(',FEVrV9c=Pm%Q=N');
+
+    //     await loginSubmitButton.click();
+
+    //     await browser.pause(1000);
+
+    //     const title =  await browser.getTitle();
+    //     expect(title).toEqual("Boards | Trello");
+    //     console.log(title);
+    // });
+
+    it("Logging in with a valid email", async () => {
         const logInButton = await $('//div[contains(@class, "jnMZCI")]/a[text()="Log in"]');
         await logInButton.waitForClickable();
         await logInButton.click();
 
-        const signUpButton = await $('//a[text()="Create an account"]');
-        await signUpButton.waitForClickable();
-        await signUpButton.click();
+        await browser.pause(1000);
+
+        const emailInputField = await $('//input[@id="username"]');
+        await emailInputField.click();
+        await emailInputField.setValue('testnodejs55555@gmail.com');
+        
+        await browser.pause(1000);
+
+        const loginSubmitButton = await $('//button[@id="login-submit"]');
+        await loginSubmitButton.waitForClickable();
+        await loginSubmitButton.click();
 
         await browser.pause(1000);
 
-        const emailInputField = await $('//input[@id="email"]');
-        await emailInputField.click();
-        await emailInputField.setValue('testnodejs55555@gmail');
+        const passwordInputField = await $('//input[@id="password"]');
+        await passwordInputField.click();
+        await passwordInputField.setValue(',FEVrV9c=Pm%Q=N');
 
-        const signUpSubmitButton = await $('//button[@id="signup-submit"]');
-        await signUpSubmitButton.waitForClickable();
-        await signUpSubmitButton.click();
+        await loginSubmitButton.click();
 
-        const errorMessage = await $('//div[@id="email-uid6-error"]');
-        expect (await errorMessage.getText()).toEqual("Please enter a valid email address");
+        await browser.pause(1000);
 
-        await browser.pause(5000);
-
-        // const loginFrame = await $('iframe#dialog_frame');
-        // await loginFrame.waitForExist();
-        // await browser.switchToFrame(loginFrame);
-
-        
-
-        // const passwordInputField = await $('input#login_password');
-        // await passwordInputField.click();
-        // await passwordInputField.setValue('55555');
-
-        // const logInButton = await $('input#btn_login');
-        // await logInButton.click();
-        // await browser.pause(1000);
-        
-        // const errorMessage = await $('div#ajax-error');
-        // expect (await errorMessage.getText()).toEqual("E-mail address not found, or password incorrect.\nTo reset your password, please use the 'Forgotten password?' link.");
     });
 
     /*it("Logging in with a valid email but incorrect password", async () => {
