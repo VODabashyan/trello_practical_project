@@ -1,3 +1,12 @@
+//const expect = require('chai').expect;
+//const { expect } = require('chai');
+//import {assert, should}  from 'chai';
+
+import { expect } from 'chai';
+
+//const { should } = require("chai")
+//const should = require('chai').should();
+
 describe("Trello Suite", async () => {
     beforeEach(async () => {
         await browser.url("https://trello.com/home");
@@ -27,6 +36,40 @@ describe("Trello Suite", async () => {
 
     // });
 
+    it("Logging in with a valid email", async () => {
+        const logInButton = await $('//div[contains(@class, "jnMZCI")]/a[text()="Log in"]');
+        await logInButton.waitForClickable();
+        await logInButton.click();
+
+        await browser.pause(1000);
+
+        const emailInputField = await $('//input[@id="username"]');
+        await emailInputField.click();
+        await emailInputField.setValue('testnodejs55555@gmail.com');
+        
+        await browser.pause(1000);
+
+        const loginSubmitButton = await $('//button[@id="login-submit"]');
+        await loginSubmitButton.waitForClickable();
+        await loginSubmitButton.click();
+
+        await browser.pause(2000);
+
+        const passwordInputField = await $('//input[@id="password"]');
+        await passwordInputField.click();
+        await passwordInputField.setValue(',FEVrV9c=Pm%Q=N');
+
+        await loginSubmitButton.click();
+
+        await browser.pause(1000);
+
+        // const title =  await browser.getTitle();
+        // expect(title).toEqual("Boards | Trello");
+        // console.log(title);
+
+        expect (await browser.getTitle()).to.equal("Boards | Trello");
+    });
+
     // it("Logging in with a valid email", async () => {
     //     const logInButton = await $('//div[contains(@class, "jnMZCI")]/a[text()="Log in"]');
     //     await logInButton.waitForClickable();
@@ -54,39 +97,7 @@ describe("Trello Suite", async () => {
 
     //     await browser.pause(1000);
 
-    //     const title =  await browser.getTitle();
-    //     expect(title).toEqual("Boards | Trello");
-    //     console.log(title);
     // });
-
-    it("Logging in with a valid email", async () => {
-        const logInButton = await $('//div[contains(@class, "jnMZCI")]/a[text()="Log in"]');
-        await logInButton.waitForClickable();
-        await logInButton.click();
-
-        await browser.pause(1000);
-
-        const emailInputField = await $('//input[@id="username"]');
-        await emailInputField.click();
-        await emailInputField.setValue('testnodejs55555@gmail.com');
-        
-        await browser.pause(1000);
-
-        const loginSubmitButton = await $('//button[@id="login-submit"]');
-        await loginSubmitButton.waitForClickable();
-        await loginSubmitButton.click();
-
-        await browser.pause(1000);
-
-        const passwordInputField = await $('//input[@id="password"]');
-        await passwordInputField.click();
-        await passwordInputField.setValue(',FEVrV9c=Pm%Q=N');
-
-        await loginSubmitButton.click();
-
-        await browser.pause(1000);
-
-    });
 
     /*it("Logging in with a valid email but incorrect password", async () => {
         await $('//span[text()="Log In/Register"]').click();

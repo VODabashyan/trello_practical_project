@@ -1,3 +1,4 @@
+//require('@babel/register');
 const { TimelineService } = require('wdio-timeline-reporter/timeline-service');
 
 exports.config = {
@@ -46,7 +47,7 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 1,
+    maxInstances: 10,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -54,6 +55,7 @@ exports.config = {
     //
     capabilities: [{
         browserName: 'chrome',
+        maxInstances: 1,
         // 'goog:chromeOptions': {
         //     args: ['--headless', '--disable-gpu', '--window-size=1280,800'],
         // },
@@ -199,8 +201,17 @@ exports.config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {object}         browser      instance of created browser/device session
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: function (capabilities, specs) {
+        require('babel-register');
+
+        const chai = require('chai');
+        const chaiWebdriver = require('chai-webdriverio').default;
+        chai.use(chaiWebdriver(browser));
+
+        global.expect = chai.expect;
+        global.assert = chai.assert;
+        global.should = chai.should();
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {string} commandName hook command name
