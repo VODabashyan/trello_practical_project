@@ -1,8 +1,4 @@
-//require('@babel/register');
-const { TimelineService } = require('wdio-timeline-reporter/timeline-service');
-
 exports.config = {
-    
     //
     // ====================
     // Runner Configuration
@@ -25,7 +21,7 @@ exports.config = {
     // of the config file unless it's absolute.
     //
     specs: [
-       "./tests/**/*.js"
+        "./tests/**/*.js"
     ],
     // Patterns to exclude.
     exclude: [
@@ -54,11 +50,7 @@ exports.config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        browserName: 'chrome',
-        maxInstances: 1,
-        // 'goog:chromeOptions': {
-        //     args: ['--headless', '--disable-gpu', '--window-size=1280,800'],
-        // },
+        browserName: 'chrome'
     }],
 
     //
@@ -73,7 +65,7 @@ exports.config = {
     // Set specific log levels per logger
     // loggers:
     // - webdriver, webdriverio
-    // - @wdio/browserstack-service, @wdio/devtools-service, @wdio/sauce-service
+    // - @wdio/browserstack-service, @wdio/lighthouse-service, @wdio/sauce-service
     // - @wdio/mocha-framework, @wdio/jasmine-framework
     // - @wdio/local-runner
     // - @wdio/sumologic-reporter
@@ -108,7 +100,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: [[TimelineService]],
+    // services: [],
     //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -131,16 +123,7 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: [['spec', {
-        addConsoleLogs: true,
-    }],
-    ['timeline',
-        {
-            outputDir: './reports/timeline',
-            embedImages: true,
-            screenshotStrategy: 'on:error'
-
-        }]],
+    reporters: ['spec'],
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
@@ -201,17 +184,8 @@ exports.config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {object}         browser      instance of created browser/device session
      */
-    before: function (capabilities, specs) {
-        require('babel-register');
-
-        const chai = require('chai');
-        const chaiWebdriver = require('chai-webdriverio').default;
-        chai.use(chaiWebdriver(browser));
-
-        global.expect = chai.expect;
-        global.assert = chai.assert;
-        global.should = chai.should();
-    },
+    // before: function (capabilities, specs) {
+    // },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {string} commandName hook command name
