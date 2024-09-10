@@ -1,40 +1,36 @@
-//const expect = require('chai').expect;
-//const { expect } = require('chai');
-//import {assert, should}  from 'chai';
-
-import { expect } from 'chai';
-
-//const { should } = require("chai")
-//const should = require('chai').should();
+import * as chai from 'chai';
+let assert = chai.assert;
+let should = chai.should();
+let expectChai = chai.expect;
 
 describe("Trello Suite", async () => {
     beforeEach(async () => {
         await browser.url("https://trello.com/home");
     });
 
-    // it("Logging in with an invalid email", async () => {
-    //     const logInButton = await $('//div[contains(@class, "jnMZCI")]/a[text()="Log in"]');
-    //     await logInButton.waitForClickable();
-    //     await logInButton.click();
+    it("Logging in with an invalid email", async () => {
+        const logInButton = await $('//div[contains(@class, "jnMZCI")]/a[text()="Log in"]');
+        await logInButton.waitForClickable();
+        await logInButton.click();
 
-    //     const signUpButton = await $('//a[text()="Create an account"]');
-    //     await signUpButton.waitForClickable();
-    //     await signUpButton.click();
+        const signUpButton = await $('//a[text()="Create an account"]');
+        await signUpButton.waitForClickable();
+        await signUpButton.click();
 
-    //     await browser.pause(1000);
+        await browser.pause(1000);
 
-    //     const emailInputField = await $('//input[@id="email"]');
-    //     await emailInputField.click();
-    //     await emailInputField.setValue('testnodejs55555@gmail');
+        const emailInputField = await $('//input[@id="email"]');
+        await emailInputField.click();
+        await emailInputField.setValue('testnodejs55555@gmail');
 
-    //     const signUpSubmitButton = await $('//button[@id="signup-submit"]');
-    //     await signUpSubmitButton.waitForClickable();
-    //     await signUpSubmitButton.click();
+        const signUpSubmitButton = await $('//button[@id="signup-submit"]');
+        await signUpSubmitButton.waitForClickable();
+        await signUpSubmitButton.click();
 
-    //     const errorMessage = await $('//div[@id="email-uid6-error"]');
-    //     expect (await errorMessage.getText()).toEqual("Please enter a valid email address");
+        const errorMessage = await $('//div[@id="email-uid6-error"]');
+        assert.equal(await errorMessage.getText(), "Please enter a valid email address");
 
-    // });
+    });
 
     it("Logging in with a valid email", async () => {
         const logInButton = await $('//div[contains(@class, "jnMZCI")]/a[text()="Log in"]');
@@ -63,11 +59,7 @@ describe("Trello Suite", async () => {
 
         await browser.pause(1000);
 
-        // const title =  await browser.getTitle();
-        // expect(title).toEqual("Boards | Trello");
-        // console.log(title);
-
-        expect (await browser.getTitle()).to.equal("Boards | Trello");
+        expectChai (await browser.getTitle()).to.equal("Boards | Trello");
     });
 
     // it("Logging in with a valid email", async () => {
