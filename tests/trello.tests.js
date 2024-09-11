@@ -62,7 +62,55 @@ describe("Trello Suite", async () => {
     //     expectChai (await browser.getTitle()).to.equal("Boards | Trello");
     // });
 
-    it("Logging in with a valid email", async () => {
+    // it("should get confirmation when changing the bio", async () => {
+    //     const logInButton = await $('//div[contains(@class, "jnMZCI")]/a[text()="Log in"]');
+    //     await logInButton.waitForClickable();
+    //     await logInButton.click();
+
+    //     await browser.pause(1000);
+
+    //     const emailInputField = await $('//input[@id="username"]');
+    //     await emailInputField.click();
+    //     await emailInputField.setValue('testnodejs55555@gmail.com');
+        
+    //     await browser.pause(1000);
+
+    //     const loginSubmitButton = await $('//button[@id="login-submit"]');
+    //     await loginSubmitButton.waitForClickable();
+    //     await loginSubmitButton.click();
+
+    //     await browser.pause(1000);
+
+    //     const passwordInputField = await $('//input[@id="password"]');
+    //     await passwordInputField.click();
+    //     await passwordInputField.setValue(',FEVrV9c=Pm%Q=N');
+
+    //     await loginSubmitButton.click();
+
+    //     await browser.pause(1000);
+
+    //     const userMenuButton = await $('//div[@data-testid="header-member-menu-avatar"]');
+    //     await userMenuButton.waitForClickable();
+    //     await userMenuButton.click();
+
+    //     const profileAndVisibiltyOption = await $('//span[text()="Profile and visibility"]');
+    //     await profileAndVisibiltyOption.waitForClickable();
+    //     await profileAndVisibiltyOption.click();
+
+    //     const bioTextArea = await $('//textarea[@id="bio"]');
+    //     await bioTextArea.waitForClickable();
+    //     await bioTextArea.click();
+    //     await bioTextArea.setValue("This is a bio");
+
+    //     const saveBioButton = await $('//button[text()="Save"]');
+    //     await saveBioButton.waitForClickable();
+    //     await saveBioButton.click();
+
+    //     const bioSavedPopup = await $('//textarea[@id="bio"]');
+    //     expect (await bioSavedPopup).toBeDisplayed();
+    // });
+
+    it("create a new board", async () => {
         const logInButton = await $('//div[contains(@class, "jnMZCI")]/a[text()="Log in"]');
         await logInButton.waitForClickable();
         await logInButton.click();
@@ -87,34 +135,45 @@ describe("Trello Suite", async () => {
 
         await loginSubmitButton.click();
 
-        await browser.pause(1000);
+        await browser.pause(3000);
 
-        const userMenuButton = await $('//div[@data-testid="header-member-menu-avatar"]');
-        await userMenuButton.waitForClickable();
-        await userMenuButton.click();
+        const createButton = await $('//button[@data-testid="header-create-menu-button"]');
+        await createButton.waitForClickable();
+        await createButton.click();
 
-        const profileAndVisibiltyOption = await $('//span[text()="Profile and visibility"]');
-        await profileAndVisibiltyOption.waitForClickable();
-        await profileAndVisibiltyOption.click();
+        const createBoardOption = await $('//button[@data-testid="header-create-board-button"]');
+        await createBoardOption.waitForClickable();
+        await createBoardOption.click();
 
-        const bioTextArea = await $('//textarea[@id="bio"]');
-        await bioTextArea.waitForClickable();
-        await bioTextArea.click();
-        await bioTextArea.setValue("This is a bio");
+        let name = "test" + Math.round(Math.random() * 1000);
+        const boardTitleInputField = await $('//input[@data-testid="create-board-title-input"]');
+        boardTitleInputField.setValue(name);
 
-        const saveBioButton = await $('//button[text()="Save"]');
-        await saveBioButton.waitForClickable();
-        await saveBioButton.click();
+        const createBoardButton = await $('//button[text()="Create"]');
+        await createBoardButton.waitForClickable();
+        await createBoardButton.click();
 
-        const bioSavedPopup = await $('//textarea[@id="bio"]');
-        expect (await bioSavedPopup).toBeDisplayed();
-
-        const bioMessage = bioTextArea.getValue();
-        console.log(bioMessage)
-
-        await browser.pause(5000);
-
+        expect(await browser.getTitle()).toHaveText(name);
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /*it("Logging in with a valid email but incorrect password", async () => {
         await $('//span[text()="Log In/Register"]').click();
