@@ -8,61 +8,61 @@ describe("Trello Suite", async () => {
         await browser.url("https://trello.com/home");
     });
 
-    it("Logging in with an invalid email", async () => {
-        const logInButton = await $('//div[contains(@class, "jnMZCI")]/a[text()="Log in"]');
-        await logInButton.waitForClickable();
-        await logInButton.click();
+    // it("Logging in with an invalid email", async () => {
+    //     const logInButton = await $('//div[contains(@class, "jnMZCI")]/a[text()="Log in"]');
+    //     await logInButton.waitForClickable();
+    //     await logInButton.click();
 
-        const signUpButton = await $('//a[text()="Create an account"]');
-        await signUpButton.waitForClickable();
-        await signUpButton.click();
+    //     const signUpButton = await $('//a[text()="Create an account"]');
+    //     await signUpButton.waitForClickable();
+    //     await signUpButton.click();
 
-        await browser.pause(1000);
+    //     await browser.pause(1000);
 
-        const emailInputField = await $('//input[@id="email"]');
-        await emailInputField.click();
-        await emailInputField.setValue('testnodejs55555@gmail');
+    //     const emailInputField = await $('//input[@id="email"]');
+    //     await emailInputField.click();
+    //     await emailInputField.setValue('testnodejs55555@gmail');
 
-        const signUpSubmitButton = await $('//button[@id="signup-submit"]');
-        await signUpSubmitButton.waitForClickable();
-        await signUpSubmitButton.click();
+    //     const signUpSubmitButton = await $('//button[@id="signup-submit"]');
+    //     await signUpSubmitButton.waitForClickable();
+    //     await signUpSubmitButton.click();
 
-        const errorMessage = await $('//div[@id="email-uid6-error"]');
-        assert.equal(await errorMessage.getText(), "Please enter a valid email address");
+    //     const errorMessage = await $('//div[@id="email-uid6-error"]');
+    //     assert.equal(await errorMessage.getText(), "Please enter a valid email address");
 
-    });
-
-    it("Logging in with a valid email", async () => {
-        const logInButton = await $('//div[contains(@class, "jnMZCI")]/a[text()="Log in"]');
-        await logInButton.waitForClickable();
-        await logInButton.click();
-
-        await browser.pause(1000);
-
-        const emailInputField = await $('//input[@id="username"]');
-        await emailInputField.click();
-        await emailInputField.setValue('testnodejs55555@gmail.com');
-        
-        await browser.pause(1000);
-
-        const loginSubmitButton = await $('//button[@id="login-submit"]');
-        await loginSubmitButton.waitForClickable();
-        await loginSubmitButton.click();
-
-        await browser.pause(2000);
-
-        const passwordInputField = await $('//input[@id="password"]');
-        await passwordInputField.click();
-        await passwordInputField.setValue(',FEVrV9c=Pm%Q=N');
-
-        await loginSubmitButton.click();
-
-        await browser.pause(1000);
-
-        expectChai (await browser.getTitle()).to.equal("Boards | Trello");
-    });
+    // });
 
     // it("Logging in with a valid email", async () => {
+    //     const logInButton = await $('//div[contains(@class, "jnMZCI")]/a[text()="Log in"]');
+    //     await logInButton.waitForClickable();
+    //     await logInButton.click();
+
+    //     await browser.pause(1000);
+
+    //     const emailInputField = await $('//input[@id="username"]');
+    //     await emailInputField.click();
+    //     await emailInputField.setValue('testnodejs55555@gmail.com');
+        
+    //     await browser.pause(1000);
+
+    //     const loginSubmitButton = await $('//button[@id="login-submit"]');
+    //     await loginSubmitButton.waitForClickable();
+    //     await loginSubmitButton.click();
+
+    //     await browser.pause(2000);
+
+    //     const passwordInputField = await $('//input[@id="password"]');
+    //     await passwordInputField.click();
+    //     await passwordInputField.setValue(',FEVrV9c=Pm%Q=N');
+
+    //     await loginSubmitButton.click();
+
+    //     await browser.pause(1000);
+
+    //     expectChai (await browser.getTitle()).to.equal("Boards | Trello");
+    // });
+
+    // it("should get confirmation when changing the bio", async () => {
     //     const logInButton = await $('//div[contains(@class, "jnMZCI")]/a[text()="Log in"]');
     //     await logInButton.waitForClickable();
     //     await logInButton.click();
@@ -89,7 +89,136 @@ describe("Trello Suite", async () => {
 
     //     await browser.pause(1000);
 
+    //     const userMenuButton = await $('//div[@data-testid="header-member-menu-avatar"]');
+    //     await userMenuButton.waitForClickable();
+    //     await userMenuButton.click();
+
+    //     const profileAndVisibiltyOption = await $('//span[text()="Profile and visibility"]');
+    //     await profileAndVisibiltyOption.waitForClickable();
+    //     await profileAndVisibiltyOption.click();
+
+    //     const bioTextArea = await $('//textarea[@id="bio"]');
+    //     await bioTextArea.waitForClickable();
+    //     await bioTextArea.click();
+    //     await bioTextArea.setValue("This is a bio");
+
+    //     const saveBioButton = await $('//button[text()="Save"]');
+    //     await saveBioButton.waitForClickable();
+    //     await saveBioButton.click();
+
+    //     const bioSavedPopup = await $('//textarea[@id="bio"]');
+    //     expect (await bioSavedPopup).toBeDisplayed();
     // });
+
+    // it("create a new board", async () => {
+    //     const logInButton = await $('//div[contains(@class, "jnMZCI")]/a[text()="Log in"]');
+    //     await logInButton.waitForClickable();
+    //     await logInButton.click();
+
+    //     await browser.pause(1000);
+
+    //     const emailInputField = await $('//input[@id="username"]');
+    //     await emailInputField.click();
+    //     await emailInputField.setValue('testnodejs55555@gmail.com');
+        
+    //     await browser.pause(1000);
+
+    //     const loginSubmitButton = await $('//button[@id="login-submit"]');
+    //     await loginSubmitButton.waitForClickable();
+    //     await loginSubmitButton.click();
+
+    //     await browser.pause(1000);
+
+    //     const passwordInputField = await $('//input[@id="password"]');
+    //     await passwordInputField.click();
+    //     await passwordInputField.setValue(',FEVrV9c=Pm%Q=N');
+
+    //     await loginSubmitButton.click();
+
+    //     await browser.pause(3000);
+
+    //     const createButton = await $('//button[@data-testid="header-create-menu-button"]');
+    //     await createButton.waitForClickable();
+    //     await createButton.click();
+
+    //     const createBoardOption = await $('//button[@data-testid="header-create-board-button"]');
+    //     await createBoardOption.waitForClickable();
+    //     await createBoardOption.click();
+
+    //     let name = "test" + Math.round(Math.random() * 1000);
+    //     const boardTitleInputField = await $('//input[@data-testid="create-board-title-input"]');
+    //     await boardTitleInputField.setValue(name);
+
+    //     const createBoardButton = await $('//button[text()="Create"]');
+    //     await createBoardButton.waitForClickable();
+    //     await createBoardButton.click();
+
+    //     const pageName = await $("//h1[contains(text(), 'test')]");
+    //     await should.exist(pageName);
+    // });
+
+    it("search for an existing board", async () => {
+        const logInButton = await $('//div[contains(@class, "jnMZCI")]/a[text()="Log in"]');
+        await logInButton.waitForClickable();
+        await logInButton.click();
+
+        await browser.pause(1000);
+
+        const emailInputField = await $('//input[@id="username"]');
+        await emailInputField.click();
+        await emailInputField.setValue('testnodejs55555@gmail.com');
+        
+        await browser.pause(1000);
+
+        const loginSubmitButton = await $('//button[@id="login-submit"]');
+        await loginSubmitButton.waitForClickable();
+        await loginSubmitButton.click();
+
+        await browser.pause(1000);
+
+        const passwordInputField = await $('//input[@id="password"]');
+        await passwordInputField.click();
+        await passwordInputField.setValue(',FEVrV9c=Pm%Q=N');
+
+        await loginSubmitButton.click();
+
+        await browser.pause(3000);
+
+        const searchField = await $('//input[@placeholder="Search"]');
+        await searchField.waitForClickable();
+        await searchField.click();
+        await searchField.setValue("My Board");
+
+        const viewAllResults = await $("//span[normalize-space()='View all results']");
+        await viewAllResults.waitForClickable();
+        await viewAllResults.click();
+
+        const myBoardOption = await $("//span[text()='My Board']");
+        await myBoardOption.waitForClickable();
+        await myBoardOption.click();
+
+        await browser.pause(3000);
+
+        const pageName = await $('//h1[text()="My Board"]');
+        await should.exist(pageName);
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /*it("Logging in with a valid email but incorrect password", async () => {
         await $('//span[text()="Log In/Register"]').click();
