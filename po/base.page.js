@@ -4,4 +4,4 @@ class BasePage {
         return browser.url(`https://trello.com/${path}`);
     }
 }
-module.exports = BasePage;
+export default BasePage;
