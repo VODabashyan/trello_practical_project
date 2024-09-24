@@ -1,5 +1,5 @@
 import BasePage from "./base.page";
-import { clickElement, setValueElement, browserPause } from '../core/core_operations.js'
+import { clickElement, setValueElement, browserPause } from '../core/core_operations.js';
 
 class BoardPage extends BasePage {
     constructor() {
@@ -9,6 +9,7 @@ class BoardPage extends BasePage {
         this.boardTitleInputField = '//input[@data-testid="create-board-title-input"]';
         this.createBoardButton = '//button[text()="Create"]';
         this.boardNameSelector = '';
+        this.myBoardOption = '//div[@title="My Board"]/parent::div';
     }
 
     async createBoard() {
@@ -27,6 +28,11 @@ class BoardPage extends BasePage {
 
     get boardName() {
         return this.boardNameSelector;
+    }
+
+    async selectMyBoard() {
+        await clickElement(this.myBoardOption);
+        await browserPause(1000);
     }
 }
 
