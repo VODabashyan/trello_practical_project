@@ -10,6 +10,8 @@ class BoardPage extends BasePage {
         this.createBoardButton = '//button[text()="Create"]';
         this.boardNameSelector = '';
         this.myBoardOption = '//div[@title="My Board"]/parent::div';
+        this.userMenuButton = '//div[@data-testid="header-member-menu-avatar"]';
+        this.profileAndVisibiltyOption = '//span[text()="Profile and visibility"]';
     }
 
     async createBoard() {
@@ -33,6 +35,11 @@ class BoardPage extends BasePage {
     async selectMyBoard() {
         await clickElement(this.myBoardOption);
         await browserPause(1000);
+    }
+
+    async selectUserProfile() {
+        await clickElement(this.userMenuButton);
+        await clickElement(this.profileAndVisibiltyOption);
     }
 }
 

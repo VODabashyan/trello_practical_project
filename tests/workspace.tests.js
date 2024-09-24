@@ -1,63 +1,14 @@
 import * as chai from 'chai';
-let assert = chai.assert;
 let should = chai.should();
-let expectChai = chai.expect;
+import { browser } from '@wdio/globals';
+import HomePage from '../po/home.page';
+import LoginPage from '../po/loginRegister.page';
+import BoardPage from '../po/board.page';
+import ProfilePage from '../po/profile.page';
 
 describe("Trello Suite", async () => {
     beforeEach(async () => {
         await browser.url("https://trello.com/home");
-    });
-
-    afterEach(async () => {
-        await browser.deleteCookies();
-    });
-
-    it("should get confirmation when changing the bio", async () => {
-        const logInButton = await $('//div[contains(@class, "jnMZCI")]/a[text()="Log in"]');
-        await logInButton.waitForClickable();
-        await logInButton.click();
-
-        await browser.pause(1000);
-
-        const emailInputField = await $('//input[@id="username"]');
-        await emailInputField.click();
-        await emailInputField.setValue('testnodejs55555@gmail.com');
-        
-        await browser.pause(1000);
-
-        const loginSubmitButton = await $('//button[@id="login-submit"]');
-        await loginSubmitButton.waitForClickable();
-        await loginSubmitButton.click();
-
-        await browser.pause(1000);
-
-        const passwordInputField = await $('//input[@id="password"]');
-        await passwordInputField.click();
-        await passwordInputField.setValue(',FEVrV9c=Pm%Q=N');
-
-        await loginSubmitButton.click();
-
-        await browser.pause(1000);
-
-        const userMenuButton = await $('//div[@data-testid="header-member-menu-avatar"]');
-        await userMenuButton.waitForClickable();
-        await userMenuButton.click();
-
-        const profileAndVisibiltyOption = await $('//span[text()="Profile and visibility"]');
-        await profileAndVisibiltyOption.waitForClickable();
-        await profileAndVisibiltyOption.click();
-
-        const bioTextArea = await $('//textarea[@id="bio"]');
-        await bioTextArea.waitForClickable();
-        await bioTextArea.click();
-        await bioTextArea.setValue("This is a bio");
-
-        const saveBioButton = await $('//button[text()="Save"]');
-        await saveBioButton.waitForClickable();
-        await saveBioButton.click();
-
-        const bioSavedPopup = await $('//textarea[@id="bio"]');
-        expect (await bioSavedPopup).toBeDisplayed();
     });
 
     it("edit the workspace details", async () => {
