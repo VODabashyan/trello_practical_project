@@ -8,7 +8,11 @@ import List from '../po/components/list.component'
 
 describe("Trello Suite", async () => {
     beforeEach(async () => {
-        await browser.url("https://trello.com/home");
+        await BoardPage.open('');
+    });
+
+    afterEach(async () => {
+        await browser.deleteCookies();
     });
 
     it("create a new list in a board", async () => {

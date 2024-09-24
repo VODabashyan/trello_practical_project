@@ -6,7 +6,11 @@ import ProfilePage from '../po/profile.page';
 
 describe("Trello Suite", async () => {
     beforeEach(async () => {
-        await browser.url("https://trello.com/home");
+        await ProfilePage.open('');
+    });
+
+    afterEach(async () => {
+        await browser.deleteCookies();
     });
 
     it("should get confirmation when changing the bio", async () => {
