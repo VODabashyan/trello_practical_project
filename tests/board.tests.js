@@ -18,9 +18,7 @@ describe("Trello Suite", async () => {
         await HomePage.openLoginPage();
         await LoginPage.login('testnodejs55555@gmail.com', ',FEVrV9c=Pm%Q=N');
         await BoardPage.createBoard();
-        await browser.pause(5000)
         const pageName = await BoardPage.boardName;
-        console.log(pageName);
         await should.exist(pageName);
 
     });
