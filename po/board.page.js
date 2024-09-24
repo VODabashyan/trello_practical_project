@@ -10,18 +10,17 @@ class BoardPage extends BasePage {
         this.createBoardButton = '//button[text()="Create"]';
         this.boardNameSelector = '';
         this.myBoardOption = '//div[@title="My Board"]/parent::div';
+        this.userMenuButton = '//div[@data-testid="header-member-menu-avatar"]';
+        this.profileAndVisibiltyOption = '//span[text()="Profile and visibility"]';
+        this.workspaceSettingsOption = '//li[@data-testid="home-team-tab-section-66a8e3490455232f9e038e6d"]//span[text()="Settings"]';
     }
 
     async createBoard() {
         await clickElement(this.createButton);
-        await browserPause(1000);
         await clickElement(this.createBoardOption);
-        await browserPause(1000);
         let name = "test" + Math.round(Math.random() * 1000);
         await setValueElement(this.boardTitleInputField, name);
-        await browserPause(1000);
         await clickElement(this.createBoardButton);
-        await browserPause(1000);
         this.boardNameSelector = await $(`//h1[contains(text(), '${name}')]`);
         await browserPause(1000);
     }
@@ -33,6 +32,15 @@ class BoardPage extends BasePage {
     async selectMyBoard() {
         await clickElement(this.myBoardOption);
         await browserPause(1000);
+    }
+
+    async selectUserProfile() {
+        await clickElement(this.userMenuButton);
+        await clickElement(this.profileAndVisibiltyOption);
+    }
+
+    async selectWorkspaceSettings() {
+        await clickElement(this.workspaceSettingsOption);
     }
 }
 

@@ -1,28 +1,27 @@
 import * as chai from 'chai';
 let should = chai.should();
 import { browser } from '@wdio/globals';
-import HomePage from '../po/home.page'
+import HomePage from '../po/home.page';
 import LoginPage from '../po/loginRegister.page';
 import BoardPage from '../po/board.page';
-import Card from '../po/components/card.component'
+import WorkspacePage from '../po/workspace.page';
 
 describe("Trello Suite", async () => {
     beforeEach(async () => {
-        await BoardPage.open('');
+        await WorkspacePage.open('');
     });
 
     afterEach(async () => {
         await browser.deleteCookies();
     });
 
-    it("create a new card in a list", async () => {
+    it("edit the workspace details", async () => {
         await HomePage.openLoginPage();
         await LoginPage.login('testnodejs55555@gmail.com', ',FEVrV9c=Pm%Q=N');
-        await BoardPage.selectMyBoard();
-        await Card.addCard();
+        await BoardPage.selectWorkspaceSettings();
+        await WorkspacePage.editWorkspaceDetails();
 
-        const createdCardName = await Card.cardName;
-        await should.exist(createdCardName);
-        
+        await should.exist(WorkspacePage.workspaceName);
+        await should.exist(WorkspacePage.workspaceDescription);
     });
 });

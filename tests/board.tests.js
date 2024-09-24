@@ -7,7 +7,7 @@ import BoardPage from '../po/board.page';
 
 describe("Trello Suite", async () => {
     beforeEach(async () => {
-        await browser.url("https://trello.com/home");
+        await BoardPage.open('');
     });
 
     afterEach(async () => {
