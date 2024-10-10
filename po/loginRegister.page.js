@@ -10,7 +10,7 @@ class LoginPage extends BasePage {
         this.emailInputField = '//input[@id="username"]';
         this.loginSubmitButton = '//button[@id="login-submit"]';
         this.passwordInputField = '//input[@id="password"]';
-        this.twoStepVerificationButton = '//button[@id="mfa-promote-dismiss"]'
+        this.dismissTwoStepVerificationButton = '//button[@id="mfa-promote-dismiss"]'
     }
 
     async signUp(email) {
