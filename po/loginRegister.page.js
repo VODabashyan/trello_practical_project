@@ -28,7 +28,7 @@ class LoginPage extends BasePage {
         await setValueElement(this.passwordInputField, password);
         await clickElement(this.loginSubmitButton);
         await browserPause(1000);
-        await clickElement(this.dismissTwoStepVerificationButton);
+        //await clickElement(this.dismissTwoStepVerificationButton);
     }
 }
 
