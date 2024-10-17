@@ -1,4 +1,4 @@
-import { clickElement, setValueElement, browserPause } from '../../core/core_operations';
+import { clickElement, setValueElement, browserPause } from '../../../core/core_operations';
 
 class List {
     constructor() {

@@ -1,5 +1,5 @@
 import BasePage from "./base.page";
-import { clickElement, setValueElement, browserPause } from '../core/core_operations.js';
+import { clickElement, setValueElement, browserPause } from '../../core/core_operations.js';
 
 class ProfilePage extends BasePage {
     constructor() {
