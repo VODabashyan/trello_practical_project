@@ -1,5 +1,5 @@
 import BasePage from "./base.page";
-import { clickElement, browserPause } from '../core/core_operations.js'
+import { clickElement, browserPause } from '../../core/core_operations.js'
 
 class HomePage extends BasePage {
     constructor() {

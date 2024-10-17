@@ -1,5 +1,5 @@
-import BasePage from "./base.page";
-import { clickElement, setValueElement, browserPause } from '../core/core_operations.js';
+import BasePage from "./base.page.js";
+import { clickElement, setValueElement, browserPause } from '../../core/core_operations.js';
 
 class WorkspacePage extends BasePage {
     constructor() {

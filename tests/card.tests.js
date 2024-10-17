@@ -1,10 +1,10 @@
 import * as chai from 'chai';
 let should = chai.should();
 import { browser } from '@wdio/globals';
-import HomePage from '../po/home.page'
-import LoginPage from '../po/loginRegister.page';
-import BoardPage from '../po/board.page';
-import Card from '../po/components/card.component'
+import HomePage from '../business/po/home.page'
+import LoginPage from '../business/po/loginRegister.page';
+import BoardPage from '../business/po/board.page';
+import Card from '../business/po/components/card.component'
 
 describe("Trello Suite", async () => {
     beforeEach(async () => {
